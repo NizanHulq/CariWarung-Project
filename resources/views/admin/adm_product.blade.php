@@ -111,9 +111,13 @@
                         <a href="{{route('adm.product.edit',$product->id)}}" class="text-secondary font-weight-bold text-sm" data-toggle="tooltip" data-original-title="Edit user">
                         <span class="badge badge-sm bg-gradient-success">Edit</span>
                         </a>
-                        <a href="{{route('adm.product.destroy','$product->id')}}" class="text-secondary font-weight-bold text-sm" data-toggle="tooltip" data-original-title="Edit user">
+                        <form action="{{route('adm.product.destroy',$product->id)}}" method="post">
+                          @csrf
+                            <button class="badge badge-sm bg-gradient-danger "><span >Hapus</span></button>
+                        </form>
+                        <!-- <a href="{{route('adm.product.destroy','$product->id')}}" class="text-secondary font-weight-bold text-sm" data-toggle="tooltip" data-original-title="Edit user">
                         <span class="badge badge-sm bg-gradient-danger">Hapus</span>
-                        </a>
+                        </a> -->
                       </td>
                     </tr>
                     @endforeach

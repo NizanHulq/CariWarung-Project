@@ -14,7 +14,7 @@ class AddFieldLikeShop extends Migration
     public function up()
     {
         Schema::table('shop', function(Blueprint $table){
-            $table->integer('suka');
+            $table->integer('suka')->default(0);
         });
     }
 

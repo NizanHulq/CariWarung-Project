@@ -2,6 +2,24 @@
 
 @section('content')
 <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
+@if (session()->has('simpan'))
+    <div class="alert alert-success alert-dismissible fade show d-flex align-items-center" role="alert">
+        <span class="">{{ session('simpan') }}</span>
+        <button type="button" class="btn-close ml-auto d-block" data-bs-dismiss="alert" aria-label="Close" style="border:0; border-radius:4px;background-color:white;">X</button>
+    </div>
+    @endif
+    @if (session()->has('delete'))
+    <div class="alert alert-success alert-dismissible fade show d-flex align-items-center" role="alert">
+        <span class="">{{ session('delete') }}</span>
+        <button type="button" class="btn-close ml-auto d-block" data-bs-dismiss="alert" aria-label="Close" style="border:0; border-radius:4px;background-color:white;">X</button>
+    </div>
+    @endif
+    @if (session()->has('update'))
+    <div class="alert alert-success alert-dismissible fade show d-flex align-items-center" role="alert">
+        <span class="">{{ session('update') }}</span>
+        <button type="button" class="btn-close ml-auto d-block" data-bs-dismiss="alert" aria-label="Close" style="border:0; border-radius:4px;background-color:white;">X</button>
+    </div>
+    @endif
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
       <div class="container-fluid py-1 px-3">
@@ -108,9 +126,13 @@
                         <a href="{{route('adm.shop.edit',$toko->id)}}" class="text-secondary font-weight-bold text-sm" data-toggle="tooltip" data-original-title="Edit user">
                         <span class="badge badge-sm bg-gradient-success">Edit</span>
                         </a>
-                        <a href="{{route('adm.shop.destroy','$toko->id')}}" class="text-secondary font-weight-bold text-sm" data-toggle="tooltip" data-original-title="Edit user">
+                        <form action="{{route('adm.shop.destroy',$toko->id)}}" method="post">
+                          @csrf
+                            <button class="badge badge-sm bg-gradient-danger "><span >Hapus</span></button>
+                        </form>
+                        <!-- <a href="{{route('adm.product.destroy','$product->id')}}" class="text-secondary font-weight-bold text-sm" data-toggle="tooltip" data-original-title="Edit user">
                         <span class="badge badge-sm bg-gradient-danger">Hapus</span>
-                        </a>
+                        </a> -->
                       </td>
                     </tr>
                     @endforeach
